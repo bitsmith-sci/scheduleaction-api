@@ -1,0 +1,14 @@
+types:
+    Action:
+        properties:
+            actionStatus:
+            agent:
+            participant:
+            object:
+            result:
+            instrument:
+            startTime:
+            endTime:
+            location:
+            error:
+

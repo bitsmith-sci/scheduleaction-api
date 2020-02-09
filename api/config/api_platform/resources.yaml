@@ -1,0 +1,15 @@
+#see vendor/api-platform/core/src/Metadata/schema/metadata.xsd
+resources:
+    App\Entity\Action:
+        iri: 'http://schema.org/Action'
+        properties:
+            actionStatus:
+            agent:
+            participant:
+            object:
+            result:
+            instrument:
+            startTime:
+            endTime:
+            location:
+            error:

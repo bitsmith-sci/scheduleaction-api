@@ -1,8 +1,10 @@
 api_platform:
-    title: Hello API Platform
+    title: scheduleaction-api
+    description: Time Tracker using api-platform
     version: 1.0.0
     mapping:
         paths: ['%kernel.project_dir%/src/Entity']
+        paths: ['%kernel.project_dir%/config/api_platform']
     patch_formats:
         json: ['application/merge-patch+json']
     swagger:
