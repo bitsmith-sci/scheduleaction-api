@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace App\Entity;
 
-use ApiPlatform\Core\Annotation\ApiProperty;
-use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -15,7 +13,6 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @see http://schema.org/Action Documentation on Schema.org
  *
  * @ORM\Entity
- * @ApiResource(iri="http://schema.org/Action")
  */
 class Action
 {
@@ -32,7 +29,6 @@ class Action
      * @var \DateTimeInterface|null The startTime of something. For a reserved event or service (e.g. FoodEstablishmentReservation), the time that it is expected to start. For actions that span a period of time, when the action was performed. e.g. John wrote a book from \*January\* to December.\\n\\nNote that Event uses startDate/endDate instead of startTime/endTime, even when describing dates with times. This situation may be clarified in future revisions.
      *
      * @ORM\Column(type="datetime", nullable=true)
-     * @ApiProperty(iri="http://schema.org/startTime")
      * @Assert\DateTime
      */
     private $startTime;
@@ -41,7 +37,6 @@ class Action
      * @var \DateTimeInterface|null The endTime of something. For a reserved event or service (e.g. FoodEstablishmentReservation), the time that it is expected to end. For actions that span a period of time, when the action was performed. e.g. John wrote a book from January to \*December\*.\\n\\nNote that Event uses startDate/endDate instead of startTime/endTime, even when describing dates with times. This situation may be clarified in future revisions.
      *
      * @ORM\Column(type="datetime", nullable=true)
-     * @ApiProperty(iri="http://schema.org/endTime")
      * @Assert\DateTime
      */
     private $endTime;
@@ -50,7 +45,6 @@ class Action
      * @var string|null the location of for example where the event is happening, an organization is located, or where an action takes place
      *
      * @ORM\Column(type="text", nullable=true)
-     * @ApiProperty(iri="http://schema.org/location")
      */
     private $location;
 
