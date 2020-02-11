@@ -12,7 +12,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @see http://schema.org/Thing Documentation on Schema.org
  *
  * @ORM\Entity
- * @InheritanceType('JOINED')
+ * @ORM\InheritanceType("JOINED")
  */
 class Thing
 {

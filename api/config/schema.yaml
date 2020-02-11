@@ -31,7 +31,7 @@ types:
 
     Thing:
         doctrine:
-            inheritanceMapping: "@ORM\\Entity\n * @InheritanceType('JOINED')"
+            inheritanceMapping: "@ORM\\Entity\n * @ORM\\InheritanceType(\"JOINED\")"
         properties: {}
 
 annotationGenerators:
