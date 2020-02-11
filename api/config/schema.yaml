@@ -1,3 +1,7 @@
+#Entities for schema generator - see: https://api-platform.com/docs/schema-generator/configuration/
+
+#Syncronize with config/api_platform/resources.yaml
+
 types:
     Action:
         properties:
@@ -11,6 +15,9 @@ types:
             endTime:
             location:
             error:
+
+    ActionStatusType: # Enumeration
+        properties: {} # Remove all properties of the parent class
 
 annotationGenerators:
     - ApiPlatform\SchemaGenerator\AnnotationGenerator\PhpDocAnnotationGenerator

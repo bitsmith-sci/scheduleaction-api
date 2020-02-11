@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Entity;
 
+use App\Enum\ActionStatusType;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -24,6 +25,14 @@ class Action
      * @ORM\Column(type="integer")
      */
     private $id;
+
+    /**
+     * @var string|null indicates the current disposition of the Action
+     *
+     * @ORM\Column(nullable=true)
+     * @Assert\Choice(callback={"ActionStatusType", "toArray"})
+     */
+    private $actionStatus;
 
     /**
      * @var \DateTimeInterface|null The startTime of something. For a reserved event or service (e.g. FoodEstablishmentReservation), the time that it is expected to start. For actions that span a period of time, when the action was performed. e.g. John wrote a book from \*January\* to December.\\n\\nNote that Event uses startDate/endDate instead of startTime/endTime, even when describing dates with times. This situation may be clarified in future revisions.
@@ -51,6 +60,16 @@ class Action
     public function getId(): ?int
     {
         return $this->id;
+    }
+
+    public function setActionStatus(?string $actionStatus): void
+    {
+        $this->actionStatus = $actionStatus;
+    }
+
+    public function getActionStatus(): ?string
+    {
+        return $this->actionStatus;
     }
 
     public function setStartTime(?\DateTimeInterface $startTime): void
