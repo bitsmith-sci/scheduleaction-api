@@ -35,6 +35,41 @@ class Action
     private $actionStatus;
 
     /**
+     * @var Thing|null The direct performer or driver of the action (animate or inanimate). e.g. \*John\* wrote a book.
+     *
+     * @ORM\OneToOne(targetEntity="App\Entity\Thing")
+     */
+    private $agent;
+
+    /**
+     * @var Thing|null Other co-agents that participated in the action indirectly. e.g. John wrote a book with \*Steve\*.
+     *
+     * @ORM\ManyToOne(targetEntity="App\Entity\Thing")
+     */
+    private $participant;
+
+    /**
+     * @var Thing|null The object upon which the action is carried out, whose state is kept intact or changed. Also known as the semantic roles patient, affected or undergoer (which change their state) or theme (which doesn't). e.g. John read \*a book\*.
+     *
+     * @ORM\OneToOne(targetEntity="App\Entity\Thing")
+     */
+    private $object;
+
+    /**
+     * @var Thing|null The result produced in the action. e.g. John wrote \*a book\*.
+     *
+     * @ORM\OneToOne(targetEntity="App\Entity\Thing")
+     */
+    private $result;
+
+    /**
+     * @var Thing|null The object that helped the agent perform the action. e.g. John wrote a book with \*a pen\*.
+     *
+     * @ORM\OneToOne(targetEntity="App\Entity\Thing")
+     */
+    private $instrument;
+
+    /**
      * @var \DateTimeInterface|null The startTime of something. For a reserved event or service (e.g. FoodEstablishmentReservation), the time that it is expected to start. For actions that span a period of time, when the action was performed. e.g. John wrote a book from \*January\* to December.\\n\\nNote that Event uses startDate/endDate instead of startTime/endTime, even when describing dates with times. This situation may be clarified in future revisions.
      *
      * @ORM\Column(type="datetime", nullable=true)
@@ -57,6 +92,13 @@ class Action
      */
     private $location;
 
+    /**
+     * @var Thing|null for failed actions, more information on the cause of the failure
+     *
+     * @ORM\ManyToOne(targetEntity="App\Entity\Thing")
+     */
+    private $error;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -70,6 +112,56 @@ class Action
     public function getActionStatus(): ?string
     {
         return $this->actionStatus;
+    }
+
+    public function setAgent(?Thing $agent): void
+    {
+        $this->agent = $agent;
+    }
+
+    public function getAgent(): ?Thing
+    {
+        return $this->agent;
+    }
+
+    public function setParticipant(?Thing $participant): void
+    {
+        $this->participant = $participant;
+    }
+
+    public function getParticipant(): ?Thing
+    {
+        return $this->participant;
+    }
+
+    public function setObject(?Thing $object): void
+    {
+        $this->object = $object;
+    }
+
+    public function getObject(): ?Thing
+    {
+        return $this->object;
+    }
+
+    public function setResult(?Thing $result): void
+    {
+        $this->result = $result;
+    }
+
+    public function getResult(): ?Thing
+    {
+        return $this->result;
+    }
+
+    public function setInstrument(?Thing $instrument): void
+    {
+        $this->instrument = $instrument;
+    }
+
+    public function getInstrument(): ?Thing
+    {
+        return $this->instrument;
     }
 
     public function setStartTime(?\DateTimeInterface $startTime): void
@@ -100,5 +192,15 @@ class Action
     public function getLocation(): ?string
     {
         return $this->location;
+    }
+
+    public function setError(?Thing $error): void
+    {
+        $this->error = $error;
+    }
+
+    public function getError(): ?Thing
+    {
+        return $this->error;
     }
 }

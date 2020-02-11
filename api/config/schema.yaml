@@ -7,7 +7,9 @@ types:
         properties:
             actionStatus:
             agent:
+                range: Thing # Person or Organization
             participant:
+                range: Thing # Person or Organization
             object:
             result:
             instrument:
@@ -19,8 +21,22 @@ types:
     ActionStatusType: # Enumeration
         properties: {} # Remove all properties of the parent class
 
+    Organization:
+        properties:
+            name:
+
+    Person:
+        properties:
+            name:
+
+    Thing:
+        doctrine:
+            inheritanceMapping: "@ORM\\Entity\n * @InheritanceType('JOINED')"
+        properties: {}
+
 annotationGenerators:
     - ApiPlatform\SchemaGenerator\AnnotationGenerator\PhpDocAnnotationGenerator
     - ApiPlatform\SchemaGenerator\AnnotationGenerator\DoctrineOrmAnnotationGenerator
+    # - ApiPlatform\SchemaGenerator\AnnotationGenerator\ApiPlatformCoreAnnotationGenerator
     - ApiPlatform\SchemaGenerator\AnnotationGenerator\ConstraintAnnotationGenerator
     - ApiPlatform\SchemaGenerator\AnnotationGenerator\SerializerGroupsAnnotationGenerator
