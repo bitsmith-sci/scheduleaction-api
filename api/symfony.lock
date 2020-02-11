@@ -146,6 +146,9 @@
     "league/html-to-markdown": {
         "version": "4.9.1"
     },
+    "myclabs/php-enum": {
+        "version": "1.7.4"
+    },
     "nelmio/cors-bundle": {
         "version": "1.5",
         "recipe": {
